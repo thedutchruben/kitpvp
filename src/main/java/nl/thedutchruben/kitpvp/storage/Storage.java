@@ -1,6 +1,7 @@
 package nl.thedutchruben.kitpvp.storage;
 
 import nl.thedutchruben.kitpvp.arenas.objects.Arena;
+import nl.thedutchruben.kitpvp.kits.object.Kit;
 import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public abstract class Storage {
 
     public abstract void saveArena(Arena arena);
 
-    public abstract void saveKit(Object kit);
+    public abstract void saveKit(Kit kit);
 
-    public abstract List<Object> loadKits();
+    public abstract List<Kit> loadKits();
 }

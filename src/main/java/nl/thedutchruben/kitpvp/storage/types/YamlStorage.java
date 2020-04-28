@@ -8,7 +8,7 @@ import nl.thedutchruben.kitpvp.storage.Storage;
 import java.util.List;
 import java.util.UUID;
 
-public class SqlLiteStorage extends Storage {
+public class YamlStorage extends Storage {
 
     public KitPvpPlayer loadPlayer(UUID uuid) {
         return null;

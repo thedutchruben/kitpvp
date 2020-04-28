@@ -1,6 +1,7 @@
 package nl.thedutchruben.kitpvp.arenas;
 
 import nl.thedutchruben.kitpvp.KitPvp;
+import nl.thedutchruben.kitpvp.arenas.command.ArenaCommand;
 import nl.thedutchruben.kitpvp.arenas.objects.Arena;
 import nl.thedutchruben.kitpvp.registery.Module;
 
@@ -15,6 +16,9 @@ public class ArenaModule extends Module {
     public void load() {
         //Load the arenas from the database
         arenas = KitPvp.getInstance().getStorageModule().getStorage().loadArenas();
+
+        //Register the command
+        registerCommand(new ArenaCommand());
     }
 
     public void unLoad() {

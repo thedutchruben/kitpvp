@@ -37,4 +37,8 @@ public class KitPvp extends JavaPlugin {
     public StorageModule getStorageModule() {
         return storageModule;
     }
+
+    public ArenaModule getArenaModule() {
+        return arenaModule;
+    }
 }

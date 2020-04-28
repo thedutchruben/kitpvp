@@ -1,5 +1,12 @@
 package nl.thedutchruben.kitpvp.registery;
 
+import nl.thedutchruben.kitpvp.KitPvp;
+import nl.thedutchruben.kitpvp.registery.commands.Command;
+import org.bukkit.command.SimpleCommandMap;
+import org.bukkit.plugin.SimplePluginManager;
+
+import java.lang.reflect.Field;
+
 /**
  * Default module setup
  */
@@ -17,4 +24,22 @@ public abstract class Module {
      */
     public abstract void unLoad();
 
+    public void registerCommand(Command command){
+        SimplePluginManager spm = (SimplePluginManager) KitPvp.getInstance().getServer()
+                .getPluginManager();
+
+        Field f = null;
+        try {
+            f = SimplePluginManager.class.getDeclaredField("commandMap");
+
+            f.setAccessible(true);
+            SimpleCommandMap scm;
+
+            scm = (SimpleCommandMap) f.get(spm);
+            System.out.println("Register command : " + command.getName());
+            scm.register("kitpvp", command);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -9,9 +9,9 @@ public class KitPvp extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
-        storageModule = new StorageModule();
-        storageModule.load();
+        this.instance = this;
+        this.storageModule = new StorageModule();
+        this.storageModule.load();
     }
 
 

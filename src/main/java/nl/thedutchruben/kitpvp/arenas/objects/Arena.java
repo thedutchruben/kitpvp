@@ -10,6 +10,10 @@ public class Arena {
     private Location spawn;
     private List<Location> spawnLocations;
 
+    public Arena(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

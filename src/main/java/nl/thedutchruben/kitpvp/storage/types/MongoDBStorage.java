@@ -6,19 +6,5 @@ import java.util.UUID;
 
 public class MongoDBStorage extends Storage {
 
-    public void loadPlayer(UUID uuid) {
 
-    }
-
-    public void savePlayer(UUID uuid) {
-
-    }
-
-    public void loadArenas() {
-
-    }
-
-    public void saveArena() {
-
-    }
 }

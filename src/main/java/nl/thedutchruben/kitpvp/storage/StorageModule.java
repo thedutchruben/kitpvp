@@ -12,6 +12,10 @@ public class StorageModule extends Module {
 
     }
 
+    /**
+     * Get the storage that is active
+     * @return The Active storage
+     */
     public Storage getStorage() {
         return storage;
     }

@@ -10,6 +10,26 @@ public class Arena {
     private Location spawn;
     private List<Location> spawnLocations;
 
+    public int getId() {
+        return id;
+    }
+
+    public Location getSpawn() {
+        return spawn;
+    }
+
+    public List<Location> getSpawnLocations() {
+        return spawnLocations;
+    }
+
+    public void setSpawn(Location spawn) {
+        this.spawn = spawn;
+    }
+
+    public void addLocation(Location location){
+        this.spawnLocations.add(location);
+    }
+
     public void save(){
         KitPvp.getInstance().getStorageModule().getStorage().saveArena(this);
     }

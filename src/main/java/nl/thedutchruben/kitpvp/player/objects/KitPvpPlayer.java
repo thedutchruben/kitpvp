@@ -10,4 +10,23 @@ public class KitPvpPlayer {
     private int deaths;
     private List<Integer> unlockedKits;
 
+    public int getId() {
+        return id;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
+    public List<Integer> getUnlockedKits() {
+        return unlockedKits;
+    }
 }

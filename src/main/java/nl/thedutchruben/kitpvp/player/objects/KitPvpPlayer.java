@@ -29,4 +29,8 @@ public class KitPvpPlayer {
     public List<Integer> getUnlockedKits() {
         return unlockedKits;
     }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
 }

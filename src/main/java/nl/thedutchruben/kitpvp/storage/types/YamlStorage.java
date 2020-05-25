@@ -1,15 +1,28 @@
 package nl.thedutchruben.kitpvp.storage.types;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.arenas.objects.Arena;
 import nl.thedutchruben.kitpvp.kits.object.Kit;
 import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
 import nl.thedutchruben.kitpvp.storage.Storage;
+import nl.thedutchruben.kitpvp.storage.adabters.LocationAdabter;
+import nl.thedutchruben.kitpvp.utils.FileManager;
+import org.bukkit.Location;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class YamlStorage extends Storage {
+    private Gson gson;
+    private FileManager fileManager = KitPvp.getInstance().getStorageModule().getFileManager();
 
+    public YamlStorage(){
+        gson = new GsonBuilder().registerTypeAdapter(Location.class,new LocationAdabter()).create();
+    }
 
     /**
      * Load a {@link KitPvpPlayer} from a {@link UUID}, if the player doesn't exist when fetching
@@ -25,7 +38,12 @@ public class YamlStorage extends Storage {
      */
     @Override
     public KitPvpPlayer loadPlayer(UUID uuid) {
-        return null;
+        if(fileManager.getConfig("players/" +uuid.toString() +".yml").get().get("data") != null){
+            return gson.fromJson((JsonElement) fileManager.getConfig(uuid.toString() +".yml").get().get("data"),KitPvpPlayer.class);
+        }
+        KitPvpPlayer kitPvpPlayer = new KitPvpPlayer();
+        kitPvpPlayer.setUuid(uuid);
+        return kitPvpPlayer;
     }
 
     /**
@@ -39,7 +57,8 @@ public class YamlStorage extends Storage {
      */
     @Override
     public void savePlayer(KitPvpPlayer kitPvpPlayer) {
-
+        fileManager.getConfig("players/" +kitPvpPlayer.getUuid().toString() +".yml").get().set("",gson.toJson(kitPvpPlayer));
+        fileManager.getConfig("players/" +kitPvpPlayer.getUuid().toString() +".yml").save();
     }
 
     /**
@@ -52,7 +71,7 @@ public class YamlStorage extends Storage {
      */
     @Override
     public List<Arena> loadArenas() {
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -65,7 +84,8 @@ public class YamlStorage extends Storage {
      */
     @Override
     public void saveArena(Arena arena) {
-
+        fileManager.getConfig("arenas/" +arena.getName() +".yml").get().set("",gson.toJson(arena));
+        fileManager.getConfig("arenas/" +arena.getName() +".yml").save();
     }
 
     /**
@@ -93,6 +113,7 @@ public class YamlStorage extends Storage {
      */
     @Override
     public void saveKit(Kit kit) {
-
+        fileManager.getConfig("kits/" +kit.getName() +".yml").get().set("",gson.toJson(kit));
+        fileManager.getConfig("kits/" +kit.getName() +".yml").save();
     }
 }

@@ -26,8 +26,8 @@ public class KitPvp extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        this.storageModule.unLoad();
         this.arenaModule.unLoad();
+        this.storageModule.unLoad();
     }
 
     public static KitPvp getInstance() {

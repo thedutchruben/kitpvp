@@ -11,17 +11,25 @@ import nl.thedutchruben.kitpvp.storage.Storage;
 import nl.thedutchruben.kitpvp.storage.adabters.LocationAdabter;
 import nl.thedutchruben.kitpvp.utils.FileManager;
 import org.bukkit.Location;
+import org.bukkit.inventory.ItemStack;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class YamlStorage extends Storage {
+public class JsonStorage extends Storage {
     private Gson gson;
     private FileManager fileManager = KitPvp.getInstance().getStorageModule().getFileManager();
 
-    public YamlStorage(){
-        gson = new GsonBuilder().registerTypeAdapter(Location.class,new LocationAdabter()).create();
+    public JsonStorage(){
+        gson = new GsonBuilder().registerTypeAdapter(Location.class,new LocationAdabter())
+                .create();
+    }
+
+    @Override
+    public String getStorageName() {
+        return "JSON";
     }
 
     /**
@@ -38,8 +46,8 @@ public class YamlStorage extends Storage {
      */
     @Override
     public KitPvpPlayer loadPlayer(UUID uuid) {
-        if(fileManager.getConfig("players/" +uuid.toString() +".yml").get().get("data") != null){
-            return gson.fromJson((JsonElement) fileManager.getConfig(uuid.toString() +".yml").get().get("data"),KitPvpPlayer.class);
+        if(fileManager.getConfig("players/" +uuid.toString() +".json").get().get("data") != null){
+            return gson.fromJson((JsonElement) fileManager.getConfig(uuid.toString() +".json").get().get("data"),KitPvpPlayer.class);
         }
         KitPvpPlayer kitPvpPlayer = new KitPvpPlayer();
         kitPvpPlayer.setUuid(uuid);
@@ -57,8 +65,8 @@ public class YamlStorage extends Storage {
      */
     @Override
     public void savePlayer(KitPvpPlayer kitPvpPlayer) {
-        fileManager.getConfig("players/" +kitPvpPlayer.getUuid().toString() +".yml").get().set("",gson.toJson(kitPvpPlayer));
-        fileManager.getConfig("players/" +kitPvpPlayer.getUuid().toString() +".yml").save();
+        fileManager.getConfig("players/" +kitPvpPlayer.getUuid().toString() +".json").get().set("data",gson.toJson(kitPvpPlayer));
+        fileManager.getConfig("players/" +kitPvpPlayer.getUuid().toString() +".json").save();
     }
 
     /**
@@ -71,7 +79,15 @@ public class YamlStorage extends Storage {
      */
     @Override
     public List<Arena> loadArenas() {
-        return new ArrayList<>();
+        List<Arena> arrayList = new ArrayList<>();
+        File dir = new File(KitPvp.getInstance().getDataFolder() + "/arenas/");
+        File[] directoryListing = dir.listFiles();
+        if (directoryListing != null) {
+            for (File child : directoryListing) {
+                arrayList.add(gson.fromJson((JsonElement) fileManager.getConfig(child.getName()).get().get("data"),Arena.class));
+            }
+        }
+        return arrayList;
     }
 
     /**
@@ -84,8 +100,8 @@ public class YamlStorage extends Storage {
      */
     @Override
     public void saveArena(Arena arena) {
-        fileManager.getConfig("arenas/" +arena.getName() +".yml").get().set("",gson.toJson(arena));
-        fileManager.getConfig("arenas/" +arena.getName() +".yml").save();
+        fileManager.getConfig("arenas/" +arena.getName() +".json").get().set("data",gson.toJson(arena));
+        fileManager.getConfig("arenas/" +arena.getName() +".json").save();
     }
 
     /**
@@ -99,7 +115,15 @@ public class YamlStorage extends Storage {
      */
     @Override
     public List<Kit> loadKits() {
-        return null;
+        List<Kit> arrayList = new ArrayList<>();
+        File dir = new File(KitPvp.getInstance().getDataFolder() + "/kits/");
+        File[] directoryListing = dir.listFiles();
+        if (directoryListing != null) {
+            for (File child : directoryListing) {
+                arrayList.add(gson.fromJson((JsonElement) fileManager.getConfig(child.getName()).get().get("data"),Kit.class));
+            }
+        }
+        return arrayList;
     }
 
     /**
@@ -113,7 +137,12 @@ public class YamlStorage extends Storage {
      */
     @Override
     public void saveKit(Kit kit) {
-        fileManager.getConfig("kits/" +kit.getName() +".yml").get().set("",gson.toJson(kit));
-        fileManager.getConfig("kits/" +kit.getName() +".yml").save();
+        fileManager.getConfig("kits/" +kit.getName() +".json").get().set("data",gson.toJson(kit));
+        fileManager.getConfig("kits/" +kit.getName() +".json").save();
+    }
+
+    @Override
+    public void disconnect() {
+
     }
 }

@@ -10,6 +10,11 @@ import java.util.UUID;
 
 public class MysqlStorage extends Storage {
 
+    @Override
+    public String getStorageName() {
+        return "MYSQL";
+    }
+
     /**
      * Load a {@link KitPvpPlayer} from a {@link UUID}, if the player doesn't exist when fetching
      * from the storage the called method will generate a {@link KitPvpPlayer} with default values.
@@ -92,6 +97,11 @@ public class MysqlStorage extends Storage {
      */
     @Override
     public void saveKit(Kit kit) {
+
+    }
+
+    @Override
+    public void disconnect() {
 
     }
 }

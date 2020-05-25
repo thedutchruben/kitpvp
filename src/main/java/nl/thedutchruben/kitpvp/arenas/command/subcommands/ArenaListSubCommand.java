@@ -16,7 +16,7 @@ public class ArenaListSubCommand extends SubCommand {
 
     @Override
     public void execute(CommandSender commandSender, String[] args) {
-        MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"-----------["+Colors.HIGH_LIGHT +"ARENAS "+Colors.MESSAGE+"]-----------",false);
+        MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"-----------["+Colors.HIGH_LIGHT.getChatColor() +"ARENAS "+Colors.MESSAGE.getChatColor()+"]-----------",false);
         for (Arena arena : KitPvp.getInstance().getArenaModule().getArenas()) {
             MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"Id : " + arena.getId() + ", Name: " + arena.getName(),false);
 

@@ -10,6 +10,10 @@ import java.util.UUID;
 
 public class SqlLiteStorage extends Storage {
 
+    @Override
+    public String getStorageName() {
+        return "SQLLite";
+    }
 
     /**
      * Load a {@link KitPvpPlayer} from a {@link UUID}, if the player doesn't exist when fetching
@@ -93,6 +97,11 @@ public class SqlLiteStorage extends Storage {
      */
     @Override
     public void saveKit(Kit kit) {
+
+    }
+
+    @Override
+    public void disconnect() {
 
     }
 }

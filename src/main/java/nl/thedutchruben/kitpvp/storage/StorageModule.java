@@ -1,26 +1,24 @@
 package nl.thedutchruben.kitpvp.storage;
 
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.kits.object.Kit;
-import nl.thedutchruben.kitpvp.player.listeners.PlayerJoinLeaveListener;
 import nl.thedutchruben.kitpvp.registery.Module;
 import nl.thedutchruben.kitpvp.storage.types.MongoDBStorage;
 import nl.thedutchruben.kitpvp.storage.types.MysqlStorage;
 import nl.thedutchruben.kitpvp.storage.types.SqlLiteStorage;
-import nl.thedutchruben.kitpvp.storage.types.YamlStorage;
+import nl.thedutchruben.kitpvp.storage.types.JsonStorage;
 import nl.thedutchruben.kitpvp.utils.FileManager;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+
+import java.util.Arrays;
 
 public class StorageModule extends Module {
     private Storage storage;
     private FileManager fileManager = new FileManager(KitPvp.getInstance());
     public void load() {
         createConfig();
-        Bukkit.getPluginManager().registerEvents(new PlayerJoinLeaveListener(),KitPvp.getInstance());
         switch (fileManager.getConfig("database.yml").get().getString("database")){
-            case "yaml":
-                storage = new YamlStorage();
+            case "json":
+                storage = new JsonStorage();
                 return;
             case "msyql":
                 storage = new MysqlStorage();
@@ -49,7 +47,7 @@ public class StorageModule extends Module {
     public void createConfig(){
         FileManager.Config config = fileManager.getConfig("database.yml");
         FileConfiguration fileConfiguration = config.get();
-        fileConfiguration.addDefault("database","yaml");
+        fileConfiguration.addDefault("database","json");
         fileConfiguration.addDefault("mysql.hostname","localhost");
         fileConfiguration.addDefault("mysql.port",3306);
         fileConfiguration.addDefault("mysql.user","kitpvp");
@@ -62,6 +60,31 @@ public class StorageModule extends Module {
         fileConfiguration.addDefault("mongo.password","password");
         fileConfiguration.addDefault("mongo.database","kitpvp");
         config.copyDefaults(true).save();
+
+        FileManager.Config config2 = fileManager.getConfig("config.yml");
+        FileConfiguration fileConfiguration2 = config2.get();
+        fileConfiguration2.addDefault("skip-death-screen",true);
+        fileConfiguration2.addDefault("custom-death-messages.enabled",true);
+        fileConfiguration2.addDefault("custom-death-messages.messages",Arrays.asList("Player died","Player died again"));
+        fileConfiguration2.addDefault("scoreboard",true);
+        config2.copyDefaults(true).save();
+
+        FileManager.Config config3 = fileManager.getConfig("scoreboard.json");
+        FileConfiguration fileConfiguration3 = config3.get();
+        fileConfiguration3.addDefault("scoreboard.title","KitPvp");
+        fileConfiguration3.addDefault("scoreboard.lines", Arrays.asList(
+                "Kills :",
+                "<KILLS>",
+                "",
+                "Deaths :",
+                "<DEATHS>",
+                "",
+                "KD :",
+                "<KD>",
+                ""
+        ));
+        config3.copyDefaults(true).save();
+
     }
 
     public FileManager getFileManager() {

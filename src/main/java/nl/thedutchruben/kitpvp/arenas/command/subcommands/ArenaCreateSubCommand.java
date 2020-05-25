@@ -22,7 +22,7 @@ public class ArenaCreateSubCommand extends SubCommand {
             Arena arena = new Arena(KitPvp.getInstance().getArenaModule().getArenas().size() + 1);
             arena.setName(args[0]);
             KitPvp.getInstance().getStorageModule().getStorage().saveArena(arena);
-            MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"Arena " + Colors.HIGH_LIGHT + " successfully" + Colors.MESSAGE +" created!" ,true);
+            MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"Arena " + Colors.HIGH_LIGHT.getChatColor() + " successfully" + Colors.MESSAGE.getChatColor() +" created!" ,true);
 
         }else{
             MessageUtil.sendMessage(commandSender, Colors.ERROR,"Wrong execution : " + getUsage(),true);

@@ -21,6 +21,8 @@ import java.util.UUID;
  */
 public abstract class Storage {
 
+    public abstract String getStorageName();
+
     /**
      * Load a {@link KitPvpPlayer} from a {@link UUID}, if the player doesn't exist when fetching
      * from the storage the called method will generate a {@link KitPvpPlayer} with default values.
@@ -87,4 +89,6 @@ public abstract class Storage {
      * @since 1.0-SNAPSHOT
      */
     public abstract void saveKit(Kit kit);
+
+    public abstract void disconnect();
 }

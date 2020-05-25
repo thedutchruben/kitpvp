@@ -11,7 +11,12 @@ public class Kit {
     private Material displayItem;
     private String description;
     private double cost;
+    private boolean permanetBuy;
     private List<ItemStack> items;
+
+    public Kit(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
@@ -33,6 +38,10 @@ public class Kit {
         return cost;
     }
 
+    public boolean isPermanetBuy() {
+        return permanetBuy;
+    }
+
     public List<ItemStack> getItems() {
         return items;
     }
@@ -51,5 +60,9 @@ public class Kit {
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public void setPermanetBuy(boolean permanetBuy) {
+        this.permanetBuy = permanetBuy;
     }
 }

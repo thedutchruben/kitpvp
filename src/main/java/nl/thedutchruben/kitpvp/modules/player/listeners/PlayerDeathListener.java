@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.player.listeners;
+package nl.thedutchruben.kitpvp.modules.player.listeners;
 
 import nl.thedutchruben.kitpvp.utils.Settings;
 import org.bukkit.event.EventHandler;

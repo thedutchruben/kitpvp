@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.storage.adabters;
+package nl.thedutchruben.kitpvp.framework.storage.adabters;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;

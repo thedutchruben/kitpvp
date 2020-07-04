@@ -1,8 +1,8 @@
-package nl.thedutchruben.kitpvp.player.listeners;
+package nl.thedutchruben.kitpvp.modules.player.listeners;
 
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.player.PlayerModule;
-import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
+import nl.thedutchruben.kitpvp.modules.player.PlayerModule;
+import nl.thedutchruben.kitpvp.framework.player.KitPvpPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.player.events;
+package nl.thedutchruben.kitpvp.framework.player.events;
 
 public class KitPvpPlayerEvent {
 }

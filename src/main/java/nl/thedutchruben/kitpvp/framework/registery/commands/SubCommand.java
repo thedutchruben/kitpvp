@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.registery.commands;
+package nl.thedutchruben.kitpvp.framework.registery.commands;
 
 import nl.thedutchruben.kitpvp.utils.Colors;
 import org.bukkit.command.CommandSender;

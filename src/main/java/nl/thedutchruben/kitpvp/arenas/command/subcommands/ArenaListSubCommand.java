@@ -19,7 +19,6 @@ public class ArenaListSubCommand extends SubCommand {
         MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"-----------["+Colors.HIGH_LIGHT.getChatColor() +"ARENAS "+Colors.MESSAGE.getChatColor()+"]-----------",false);
         for (Arena arena : KitPvp.getInstance().getArenaModule().getArenas()) {
             MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"Id : " + arena.getId() + ", Name: " + arena.getName(),false);
-
         }
     }
 }

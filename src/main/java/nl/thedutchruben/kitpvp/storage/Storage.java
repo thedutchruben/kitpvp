@@ -90,5 +90,8 @@ public abstract class Storage {
      */
     public abstract void saveKit(Kit kit);
 
+    /**
+     * Disconnect the data base connections
+     */
     public abstract void disconnect();
 }

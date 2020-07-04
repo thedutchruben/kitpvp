@@ -11,7 +11,6 @@ import nl.thedutchruben.kitpvp.storage.Storage;
 import nl.thedutchruben.kitpvp.storage.adabters.LocationAdabter;
 import nl.thedutchruben.kitpvp.utils.FileManager;
 import org.bukkit.Location;
-import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -141,8 +140,13 @@ public class JsonStorage extends Storage {
         fileManager.getConfig("kits/" +kit.getName() +".json").save();
     }
 
+    /**
+     * Disconnect the data base connections
+     */
     @Override
     public void disconnect() {
 
     }
+
+
 }

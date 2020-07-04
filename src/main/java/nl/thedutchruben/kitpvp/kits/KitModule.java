@@ -3,9 +3,11 @@ package nl.thedutchruben.kitpvp.kits;
 import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.kits.object.Kit;
 import nl.thedutchruben.kitpvp.registery.Module;
+import org.bukkit.Bukkit;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
 
 public class KitModule extends Module {
     private List<Kit> kits;
@@ -16,6 +18,7 @@ public class KitModule extends Module {
     @Override
     public void load() {
         kits = KitPvp.getInstance().getStorageModule().getStorage().loadKits();
+        Bukkit.getLogger().log(Level.INFO,kits.size() + " kits loaded!");
     }
 
     /**

@@ -10,13 +10,11 @@ import org.bukkit.entity.Player;
 import java.util.*;
 
 public class PlayerModule extends Module {
-    private List<String> deathMessages;
     private Map<UUID,KitPvpPlayer> kitPvpPlayers;
 
     public void load() {
         this.kitPvpPlayers = new HashMap<>();
         Bukkit.getPluginManager().registerEvents(new PlayerJoinLeaveListener(), KitPvp.getInstance());
-        deathMessages = KitPvp.getInstance().getStorageModule().getFileManager().getConfig("config.yml").get().getStringList("custom-death-messages.messages");
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             KitPvpPlayer kitPvpPlayer = KitPvp.getInstance().getStorageModule().getStorage().loadPlayer(onlinePlayer.getUniqueId());
@@ -33,7 +31,4 @@ public class PlayerModule extends Module {
         return kitPvpPlayers;
     }
 
-    public List<String> getDeathMessages() {
-        return deathMessages;
-    }
 }

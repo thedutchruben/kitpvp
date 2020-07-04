@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.arenas.objects;
+package nl.thedutchruben.kitpvp.framework.arenas;
 
 import nl.thedutchruben.kitpvp.KitPvp;
 import org.bukkit.Location;

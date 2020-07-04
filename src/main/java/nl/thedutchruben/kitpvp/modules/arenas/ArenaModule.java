@@ -1,9 +1,9 @@
-package nl.thedutchruben.kitpvp.arenas;
+package nl.thedutchruben.kitpvp.modules.arenas;
 
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.arenas.command.ArenaCommand;
-import nl.thedutchruben.kitpvp.arenas.objects.Arena;
-import nl.thedutchruben.kitpvp.registery.Module;
+import nl.thedutchruben.kitpvp.modules.arenas.command.ArenaCommand;
+import nl.thedutchruben.kitpvp.framework.arenas.Arena;
+import nl.thedutchruben.kitpvp.framework.registery.Module;
 import org.bukkit.Bukkit;
 
 import java.util.List;

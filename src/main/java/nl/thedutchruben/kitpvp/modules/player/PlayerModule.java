@@ -1,9 +1,9 @@
-package nl.thedutchruben.kitpvp.player;
+package nl.thedutchruben.kitpvp.modules.player;
 
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.player.listeners.PlayerJoinLeaveListener;
-import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
-import nl.thedutchruben.kitpvp.registery.Module;
+import nl.thedutchruben.kitpvp.modules.player.listeners.PlayerJoinLeaveListener;
+import nl.thedutchruben.kitpvp.framework.player.KitPvpPlayer;
+import nl.thedutchruben.kitpvp.framework.registery.Module;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

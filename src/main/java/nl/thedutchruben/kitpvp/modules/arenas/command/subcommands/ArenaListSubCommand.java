@@ -1,9 +1,9 @@
-package nl.thedutchruben.kitpvp.arenas.command.subcommands;
+package nl.thedutchruben.kitpvp.modules.arenas.command.subcommands;
 
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.arenas.objects.Arena;
-import nl.thedutchruben.kitpvp.registery.commands.Command;
-import nl.thedutchruben.kitpvp.registery.commands.SubCommand;
+import nl.thedutchruben.kitpvp.framework.arenas.Arena;
+import nl.thedutchruben.kitpvp.framework.registery.commands.Command;
+import nl.thedutchruben.kitpvp.framework.registery.commands.SubCommand;
 import nl.thedutchruben.kitpvp.utils.Colors;
 import nl.thedutchruben.kitpvp.utils.MessageUtil;
 import org.bukkit.command.CommandSender;

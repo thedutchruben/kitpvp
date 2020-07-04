@@ -1,9 +1,9 @@
 package nl.thedutchruben.kitpvp;
 
-import nl.thedutchruben.kitpvp.arenas.ArenaModule;
-import nl.thedutchruben.kitpvp.kits.KitModule;
-import nl.thedutchruben.kitpvp.player.PlayerModule;
-import nl.thedutchruben.kitpvp.storage.StorageModule;
+import nl.thedutchruben.kitpvp.modules.arenas.ArenaModule;
+import nl.thedutchruben.kitpvp.modules.kits.KitModule;
+import nl.thedutchruben.kitpvp.modules.player.PlayerModule;
+import nl.thedutchruben.kitpvp.modules.storage.StorageModule;
 import nl.thedutchruben.kitpvp.utils.Settings;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;

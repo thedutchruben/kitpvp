@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.kits.object;
+package nl.thedutchruben.kitpvp.framework.kits;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

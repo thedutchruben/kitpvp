@@ -1,27 +1,19 @@
-package nl.thedutchruben.kitpvp.storage;
+package nl.thedutchruben.kitpvp.framework.storage.types;
 
-import nl.thedutchruben.kitpvp.arenas.objects.Arena;
-import nl.thedutchruben.kitpvp.kits.object.Kit;
-import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
+import nl.thedutchruben.kitpvp.framework.arenas.Arena;
+import nl.thedutchruben.kitpvp.framework.kits.Kit;
+import nl.thedutchruben.kitpvp.framework.player.KitPvpPlayer;
+import nl.thedutchruben.kitpvp.framework.storage.Storage;
 
 import java.util.List;
 import java.util.UUID;
 
-/**
- * An abstract class which can be implemented to create a storage for the data in this project,
- * such data may be player names, in-game kills / deaths, in-game bought kits etc.
- * <p>
- * An implementation holds responsibility for saving / loading certain data, this may be
- * from a local file storage to a database such as MySql. The choice which implementation
- * will be used lies in the hands of the user of this project.
- *
- * @author Ruben
- * @author Thom
- * @since 1.0-SNAPSHOT
- */
-public abstract class Storage {
+public class SqlLiteStorage extends Storage {
 
-    public abstract String getStorageName();
+    @Override
+    public String getStorageName() {
+        return "SQLLite";
+    }
 
     /**
      * Load a {@link KitPvpPlayer} from a {@link UUID}, if the player doesn't exist when fetching
@@ -35,7 +27,10 @@ public abstract class Storage {
      * @see UUID
      * @since 1.0-SNAPSHOT
      */
-    public abstract KitPvpPlayer loadPlayer(UUID uuid);
+    @Override
+    public KitPvpPlayer loadPlayer(UUID uuid) {
+        return null;
+    }
 
     /**
      * Saves all the given {@link KitPvpPlayer} it's internal data to the storage,
@@ -46,7 +41,10 @@ public abstract class Storage {
      * @see KitPvpPlayer
      * @since 1.0-SNAPSHOT
      */
-    public abstract void savePlayer(KitPvpPlayer kitPvpPlayer);
+    @Override
+    public void savePlayer(KitPvpPlayer kitPvpPlayer) {
+
+    }
 
     /**
      * Loads all the {@link Arena} objects from the storage, the implementation should make
@@ -56,7 +54,10 @@ public abstract class Storage {
      * @see Arena
      * @since 1.0-SNAPSHOT
      */
-    public abstract List<Arena> loadArenas();
+    @Override
+    public List<Arena> loadArenas() {
+        return null;
+    }
 
     /**
      * Saves the given {@link Arena} object to the storage.
@@ -66,7 +67,10 @@ public abstract class Storage {
      * @see Arena
      * @since 1.0-SNAPSHOT
      */
-    public abstract void saveArena(Arena arena);
+    @Override
+    public void saveArena(Arena arena) {
+
+    }
 
     /**
      * Loads all {@link Kit} objects from the storage.
@@ -77,7 +81,10 @@ public abstract class Storage {
      * @see Kit
      * @since 1.0-SNAPSHOT
      */
-    public abstract List<Kit> loadKits();
+    @Override
+    public List<Kit> loadKits() {
+        return null;
+    }
 
     /**
      * Saves the given {@link Kit} to the storage, this will make sure that {@link Storage#loadKits()} will
@@ -88,10 +95,13 @@ public abstract class Storage {
      * @see Kit
      * @since 1.0-SNAPSHOT
      */
-    public abstract void saveKit(Kit kit);
+    @Override
+    public void saveKit(Kit kit) {
 
-    /**
-     * Disconnect the data base connections
-     */
-    public abstract void disconnect();
+    }
+
+    @Override
+    public void disconnect() {
+
+    }
 }

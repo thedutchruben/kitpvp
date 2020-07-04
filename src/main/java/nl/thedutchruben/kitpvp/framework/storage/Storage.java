@@ -1,19 +1,27 @@
-package nl.thedutchruben.kitpvp.storage.types;
+package nl.thedutchruben.kitpvp.framework.storage;
 
-import nl.thedutchruben.kitpvp.arenas.objects.Arena;
-import nl.thedutchruben.kitpvp.kits.object.Kit;
-import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
-import nl.thedutchruben.kitpvp.storage.Storage;
+import nl.thedutchruben.kitpvp.framework.arenas.Arena;
+import nl.thedutchruben.kitpvp.framework.kits.Kit;
+import nl.thedutchruben.kitpvp.framework.player.KitPvpPlayer;
 
 import java.util.List;
 import java.util.UUID;
 
-public class MongoDBStorage extends Storage {
+/**
+ * An abstract class which can be implemented to create a storage for the data in this project,
+ * such data may be player names, in-game kills / deaths, in-game bought kits etc.
+ * <p>
+ * An implementation holds responsibility for saving / loading certain data, this may be
+ * from a local file storage to a database such as MySql. The choice which implementation
+ * will be used lies in the hands of the user of this project.
+ *
+ * @author Ruben
+ * @author Thom
+ * @since 1.0-SNAPSHOT
+ */
+public abstract class Storage {
 
-    @Override
-    public String getStorageName() {
-        return "MONGODB";
-    }
+    public abstract String getStorageName();
 
     /**
      * Load a {@link KitPvpPlayer} from a {@link UUID}, if the player doesn't exist when fetching
@@ -27,10 +35,7 @@ public class MongoDBStorage extends Storage {
      * @see UUID
      * @since 1.0-SNAPSHOT
      */
-    @Override
-    public KitPvpPlayer loadPlayer(UUID uuid) {
-        return null;
-    }
+    public abstract KitPvpPlayer loadPlayer(UUID uuid);
 
     /**
      * Saves all the given {@link KitPvpPlayer} it's internal data to the storage,
@@ -41,10 +46,7 @@ public class MongoDBStorage extends Storage {
      * @see KitPvpPlayer
      * @since 1.0-SNAPSHOT
      */
-    @Override
-    public void savePlayer(KitPvpPlayer kitPvpPlayer) {
-
-    }
+    public abstract void savePlayer(KitPvpPlayer kitPvpPlayer);
 
     /**
      * Loads all the {@link Arena} objects from the storage, the implementation should make
@@ -54,10 +56,7 @@ public class MongoDBStorage extends Storage {
      * @see Arena
      * @since 1.0-SNAPSHOT
      */
-    @Override
-    public List<Arena> loadArenas() {
-        return null;
-    }
+    public abstract List<Arena> loadArenas();
 
     /**
      * Saves the given {@link Arena} object to the storage.
@@ -67,10 +66,7 @@ public class MongoDBStorage extends Storage {
      * @see Arena
      * @since 1.0-SNAPSHOT
      */
-    @Override
-    public void saveArena(Arena arena) {
-
-    }
+    public abstract void saveArena(Arena arena);
 
     /**
      * Loads all {@link Kit} objects from the storage.
@@ -81,10 +77,7 @@ public class MongoDBStorage extends Storage {
      * @see Kit
      * @since 1.0-SNAPSHOT
      */
-    @Override
-    public List<Kit> loadKits() {
-        return null;
-    }
+    public abstract List<Kit> loadKits();
 
     /**
      * Saves the given {@link Kit} to the storage, this will make sure that {@link Storage#loadKits()} will
@@ -95,13 +88,10 @@ public class MongoDBStorage extends Storage {
      * @see Kit
      * @since 1.0-SNAPSHOT
      */
-    @Override
-    public void saveKit(Kit kit) {
+    public abstract void saveKit(Kit kit);
 
-    }
-
-    @Override
-    public void disconnect() {
-
-    }
+    /**
+     * Disconnect the data base connections
+     */
+    public abstract void disconnect();
 }

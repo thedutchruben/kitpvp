@@ -1,8 +1,8 @@
-package nl.thedutchruben.kitpvp.kits;
+package nl.thedutchruben.kitpvp.modules.kits;
 
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.kits.object.Kit;
-import nl.thedutchruben.kitpvp.registery.Module;
+import nl.thedutchruben.kitpvp.framework.kits.Kit;
+import nl.thedutchruben.kitpvp.framework.registery.Module;
 import org.bukkit.Bukkit;
 
 import java.util.List;

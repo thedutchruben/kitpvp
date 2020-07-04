@@ -1,7 +1,7 @@
-package nl.thedutchruben.kitpvp.registery;
+package nl.thedutchruben.kitpvp.framework.registery;
 
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.registery.commands.Command;
+import nl.thedutchruben.kitpvp.framework.registery.commands.Command;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.SimplePluginManager;
 

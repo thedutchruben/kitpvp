@@ -1,14 +1,14 @@
-package nl.thedutchruben.kitpvp.storage.types;
+package nl.thedutchruben.kitpvp.framework.storage.types;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.arenas.objects.Arena;
-import nl.thedutchruben.kitpvp.kits.object.Kit;
-import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
-import nl.thedutchruben.kitpvp.storage.Storage;
-import nl.thedutchruben.kitpvp.storage.adabters.LocationAdabter;
+import nl.thedutchruben.kitpvp.framework.arenas.Arena;
+import nl.thedutchruben.kitpvp.framework.kits.Kit;
+import nl.thedutchruben.kitpvp.framework.player.KitPvpPlayer;
+import nl.thedutchruben.kitpvp.framework.storage.Storage;
+import nl.thedutchruben.kitpvp.framework.storage.adabters.LocationAdabter;
 import nl.thedutchruben.kitpvp.utils.FileManager;
 import org.bukkit.Location;
 

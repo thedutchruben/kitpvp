@@ -1,18 +1,18 @@
-package nl.thedutchruben.kitpvp.storage.types;
+package nl.thedutchruben.kitpvp.framework.storage.types;
 
-import nl.thedutchruben.kitpvp.arenas.objects.Arena;
-import nl.thedutchruben.kitpvp.kits.object.Kit;
-import nl.thedutchruben.kitpvp.player.objects.KitPvpPlayer;
-import nl.thedutchruben.kitpvp.storage.Storage;
+import nl.thedutchruben.kitpvp.framework.arenas.Arena;
+import nl.thedutchruben.kitpvp.framework.kits.Kit;
+import nl.thedutchruben.kitpvp.framework.player.KitPvpPlayer;
+import nl.thedutchruben.kitpvp.framework.storage.Storage;
 
 import java.util.List;
 import java.util.UUID;
 
-public class SqlLiteStorage extends Storage {
+public class MongoDBStorage extends Storage {
 
     @Override
     public String getStorageName() {
-        return "SQLLite";
+        return "MONGODB";
     }
 
     /**

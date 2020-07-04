@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.player.objects;
+package nl.thedutchruben.kitpvp.framework.player;
 
 import com.google.gson.annotations.SerializedName;
 

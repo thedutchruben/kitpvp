@@ -41,7 +41,7 @@ public class KitPvp extends JavaPlugin {
         metrics.addCustomChart(new Metrics.SimplePie("use_scoreboard" , () -> String.valueOf(Settings.scoreboard)));
         metrics.addCustomChart(new Metrics.SimplePie("use_custom_death_messages" , () -> String.valueOf(Settings.enableCustomDeathMessages)));
 
-        System.out.println("---------------------------------------------------");
+        System.out.println("-------------------[KitPvp]-----------------------");
         System.out.println("Thanks for using my plugin.");
         System.out.println("If you like the plugin feel free to donate.");
         System.out.println("https://www.patreon.com/thedutchruben");

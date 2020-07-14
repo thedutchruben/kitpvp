@@ -13,6 +13,11 @@ public class KitPvpPlayer {
     private int deaths;
     private List<Integer> unlockedKits;
 
+    public KitPvpPlayer(int id,UUID uuid) {
+        this.id = id;
+        this.uuid = uuid;
+    }
+
     public void setKills(int kills) {
         this.kills = kills;
     }
@@ -41,7 +46,4 @@ public class KitPvpPlayer {
         return unlockedKits;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
 }

@@ -3,9 +3,9 @@ package nl.thedutchruben.kitpvp.modules.storage;
 import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.framework.registery.Module;
 import nl.thedutchruben.kitpvp.framework.storage.Storage;
+import nl.thedutchruben.kitpvp.framework.storage.exeptions.StorageTypeNotValidException;
 import nl.thedutchruben.kitpvp.framework.storage.types.MongoDBStorage;
 import nl.thedutchruben.kitpvp.framework.storage.types.MysqlStorage;
-import nl.thedutchruben.kitpvp.framework.storage.types.SqlLiteStorage;
 import nl.thedutchruben.kitpvp.framework.storage.types.JsonStorage;
 import nl.thedutchruben.kitpvp.utils.FileManager;
 import nl.thedutchruben.kitpvp.utils.Settings;
@@ -16,6 +16,10 @@ import java.util.Arrays;
 public class StorageModule extends Module {
     private Storage storage;
     private FileManager fileManager = new FileManager(KitPvp.getInstance());
+
+    /**
+     * @throws StorageTypeNotValidException throws a exception when the storage method doesn't exist
+     */
     public void load() {
         createConfig();
         loadSettings();
@@ -29,9 +33,12 @@ public class StorageModule extends Module {
             case "mongo":
                 storage = new MongoDBStorage();
                 return;
-            case "sqllite":
-                storage = new SqlLiteStorage();
-                return;
+            default:
+                try {
+                    throw new StorageTypeNotValidException(fileManager.getConfig("database.yml").get().getString("database"));
+                } catch (StorageTypeNotValidException e) {
+                    e.printStackTrace();
+                }
         }
     }
 
@@ -41,6 +48,7 @@ public class StorageModule extends Module {
 
     /**
      * Get the storage that is active
+     * @since 1.0-Snapshot
      * @return The Active storage
      */
     public Storage getStorage() {

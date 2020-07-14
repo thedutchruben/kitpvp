@@ -2,17 +2,22 @@ package nl.thedutchruben.kitpvp.framework.arenas;
 
 import nl.thedutchruben.kitpvp.KitPvp;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Arena is the location where the players fight
  */
 public class Arena {
+    private static final Random random = new Random();
+
     private int id;
     private String name;
     private Location spawn;
     private List<Location> spawnLocations;
+    private transient List<Player> playersInArea;
 
     /**
      * Default constructor of the Arena
@@ -84,6 +89,22 @@ public class Arena {
      */
     public void removeSpawnLocation(Location location){
         this.spawnLocations.remove(location);
+    }
+
+    /**
+     * Get a spawn location from the location's
+     * @return a random location to spawn to
+     */
+    public Location getRandomSpawnLocation() {
+        return spawnLocations.get(random.nextInt(spawnLocations.size()));
+    }
+
+    /**
+     * Get all the players in the area
+     * @return a {@link List} with the players in the {@link Arena}
+     */
+    public List<Player> getPlayersInArea() {
+        return playersInArea;
     }
 
     /**

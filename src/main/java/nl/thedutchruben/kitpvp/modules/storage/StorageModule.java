@@ -100,7 +100,7 @@ public class StorageModule extends Module {
     public void loadSettings(){
         FileManager.Config config2 = fileManager.getConfig("config.yml");
         FileConfiguration fileConfiguration2 = config2.get();
-        Settings.skip_death_screen = fileConfiguration2.getBoolean("skip-death-screen");
+        Settings.skipDeathScreen = fileConfiguration2.getBoolean("skip-death-screen");
         Settings.enableCustomDeathMessages = fileConfiguration2.getBoolean("custom-death-messages.enabled");
         Settings.customDeathMessages = fileConfiguration2.getStringList("custom-death-messages.messages");
         Settings.scoreboard = fileConfiguration2.getBoolean("scoreboard");

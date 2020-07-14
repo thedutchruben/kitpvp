@@ -24,6 +24,11 @@ public abstract class Module {
      */
     public abstract void unLoad();
 
+
+    /**
+     * Regiser a plugin to the server
+     * @param command
+     */
     public void registerCommand(Command command){
         SimplePluginManager spm = (SimplePluginManager) KitPvp.getInstance().getServer()
                 .getPluginManager();

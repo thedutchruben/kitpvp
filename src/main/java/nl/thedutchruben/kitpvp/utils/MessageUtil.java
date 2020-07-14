@@ -1,7 +1,6 @@
 package nl.thedutchruben.kitpvp.utils;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class MessageUtil {
     private static String PREFIX = "[KitPvp]";

@@ -27,7 +27,7 @@ public class KitModule extends Module {
      */
     @Override
     public void unLoad() {
-
+        kits.clear();
     }
 
     public List<Kit> getKits() {

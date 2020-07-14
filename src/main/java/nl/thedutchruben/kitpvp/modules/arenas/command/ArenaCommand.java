@@ -1,9 +1,9 @@
 package nl.thedutchruben.kitpvp.modules.arenas.command;
 
+import nl.thedutchruben.kitpvp.framework.registery.commands.Command;
 import nl.thedutchruben.kitpvp.modules.arenas.command.subcommands.ArenaCreateSubCommand;
 import nl.thedutchruben.kitpvp.modules.arenas.command.subcommands.ArenaListSubCommand;
 import nl.thedutchruben.kitpvp.modules.arenas.command.subcommands.ArenaRemoveSubCommand;
-import nl.thedutchruben.kitpvp.framework.registery.commands.Command;
 
 public class ArenaCommand extends Command {
     public ArenaCommand() {

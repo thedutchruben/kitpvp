@@ -3,10 +3,9 @@ package nl.thedutchruben.kitpvp.modules.storage;
 import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.framework.registery.Module;
 import nl.thedutchruben.kitpvp.framework.storage.Storage;
+import nl.thedutchruben.kitpvp.framework.storage.types.JsonStorage;
 import nl.thedutchruben.kitpvp.framework.storage.types.MongoDBStorage;
 import nl.thedutchruben.kitpvp.framework.storage.types.MysqlStorage;
-import nl.thedutchruben.kitpvp.framework.storage.types.SqlLiteStorage;
-import nl.thedutchruben.kitpvp.framework.storage.types.JsonStorage;
 import nl.thedutchruben.kitpvp.utils.FileManager;
 import nl.thedutchruben.kitpvp.utils.Settings;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -28,15 +27,12 @@ public class StorageModule extends Module {
                 return;
             case "mongo":
                 storage = new MongoDBStorage();
-                return;
-            case "sqllite":
-                storage = new SqlLiteStorage();
-                return;
         }
     }
 
     public void unLoad() {
         this.storage.disconnect();
+        storage = null;
     }
 
     /**

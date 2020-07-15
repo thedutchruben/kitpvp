@@ -1,8 +1,12 @@
 package nl.thedutchruben.kitpvp.framework.registery.commands;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.utils.Colors;
 import nl.thedutchruben.kitpvp.utils.MessageUtil;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
@@ -21,7 +25,6 @@ public abstract class Command extends org.bukkit.command.Command implements TabC
     private final String commandPermissionPrefix = "kitpvp.command.";
 
     private List<SubCommand> subCommands;
-    private boolean defaultList = true;
 
     /**
      * Default creating of the command
@@ -53,41 +56,39 @@ public abstract class Command extends org.bukkit.command.Command implements TabC
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length <= 0) {
-            if (defaultList) {
                 for (SubCommand command : subCommands) {
                     for (String subCommandAlas : command.getAlias()) {
-                        sender.sendMessage(Colors.HIGH_LIGHT.getChatColor() + commandLabel + Colors.MESSAGE.getChatColor() + " " + subCommandAlas + " - " + command.getDescription());
+                        TextComponent message = new TextComponent( Colors.HIGH_LIGHT.getChatColor() + commandLabel + Colors.MESSAGE.getChatColor() + " " + subCommandAlas + " - " + command.getDescription() );
+                        message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND,command.getUsage()));
+                        sender.spigot().sendMessage(message);
                         for (SubCommand subCommand : command.getSubCommands()) {
                             for (String subCommandAlass : subCommand.getAlias()) {
 
-                                sender.sendMessage(Colors.HIGH_LIGHT.getChatColor() + commandLabel + Colors.MESSAGE.getChatColor() + " " + subCommand.getSubcommand() + "" + subCommandAlass + " - " + subCommand.getDescription());
+                                sender.sendMessage(Colors.HIGH_LIGHT.getChatColor() + "/" + commandLabel + Colors.MESSAGE.getChatColor() + " " + subCommand.getSubcommand() + "" + subCommandAlass + " - " + subCommand.getDescription());
                             }
                         }
                     }
-                }
-            } else {
-                executeDefault(sender, args);
-            }
-        }
-        Optional<SubCommand> subCommand = subCommands.stream().filter(subCommand1 -> subCommand1.getSubcommand().equalsIgnoreCase(args[0])).findAny();
-        if (subCommand.isPresent()) {
-            SubCommand subCommand1 = subCommand.get();
-            if (sender.hasPermission(subCommand1.getPermission())) {
-                subCommand1.execute(sender, Arrays.copyOfRange(args, 1, args.length));
-            } else {
-                MessageUtil.sendMessage((Player) sender, Colors.WARNING,"You dont have permission to do this!",true);
 
             }
-        } else {
-            if (defaultList) {
-                for (SubCommand command : subCommands) {
-                    MessageUtil.sendMessage((Player) sender, Colors.WARNING,commandLabel + " " + command.getCommand() +" - " + command.getDescription(),false);
-                    if(!command.getSubcommand().isEmpty()){
-                        sendInfo(sender,command);
-                    }
+        }else {
+            Optional<SubCommand> subCommand = subCommands.stream().filter(subCommand1 -> subCommand1.getSubcommand().equalsIgnoreCase(args[0])).findAny();
+            if (subCommand.isPresent()) {
+                SubCommand subCommand1 = subCommand.get();
+                if (sender.hasPermission(subCommand1.getPermission())) {
+                    subCommand1.execute(sender, Arrays.copyOfRange(args, 1, args.length));
+                } else {
+                    MessageUtil.sendMessage((Player) sender, Colors.WARNING, "You dont have permission to do this!", true);
+
                 }
             } else {
-                executeDefault(sender, args);
+
+                for (SubCommand command : subCommands) {
+                    MessageUtil.sendMessage((Player) sender, Colors.WARNING, commandLabel + " " + command.getCommand() + " - " + command.getDescription(), false);
+                    if (!command.getSubcommand().isEmpty()) {
+                        sendInfo(sender, command);
+                    }
+                }
+
             }
         }
         return false;
@@ -106,22 +107,6 @@ public abstract class Command extends org.bukkit.command.Command implements TabC
             }
             sendInfo(sender,subCommand);
         }
-    }
-
-    /**
-     * Set if the command send the default list
-     * @param defaultList
-     */
-    public void setDefaultList(boolean defaultList) {
-        this.defaultList = defaultList;
-    }
-
-    /**
-     * If the defaultList is false then the command wil execute the executeDefault method
-     * @param commandSender the command sender of the command
-     * @param args the args that is given by the commandsender
-     */
-    public void executeDefault(CommandSender commandSender, String[] args){
     }
 
     /**

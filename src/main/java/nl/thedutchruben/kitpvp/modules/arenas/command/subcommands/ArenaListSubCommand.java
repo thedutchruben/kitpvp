@@ -12,6 +12,7 @@ public class ArenaListSubCommand extends SubCommand {
     public ArenaListSubCommand(Command command) {
         super(command, "list");
         setDescription("Get a list with arenas");
+        setUsage("/arena list");
     }
 
     @Override

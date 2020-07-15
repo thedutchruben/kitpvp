@@ -65,5 +65,6 @@ public abstract class SubCommand {
     }
 
     public void execute(CommandSender commandSender, String[] args){
+
     }
 }

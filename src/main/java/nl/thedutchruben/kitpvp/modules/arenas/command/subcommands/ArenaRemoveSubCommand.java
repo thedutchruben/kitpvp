@@ -7,5 +7,6 @@ public class ArenaRemoveSubCommand extends SubCommand {
     public ArenaRemoveSubCommand(Command command) {
         super(command, "remove");
         setDescription("Remove a arena");
+        setUsage("/arena remove <arena>");
     }
 }

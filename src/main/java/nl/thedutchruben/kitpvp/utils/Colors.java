@@ -20,6 +20,7 @@ public enum Colors {
     }
 
     public net.md_5.bungee.api.ChatColor getChatColor() {
+        System.out.println(Bukkit.getVersion());
         if(Bukkit.getVersion().contains("1.16")){
             return oneDotSixTeenColor;
         }

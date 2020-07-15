@@ -48,7 +48,10 @@ public class JsonStorage extends Storage {
         if(fileManager.getConfig("players/" +uuid.toString() +".json").get().get("data") != null){
             return gson.fromJson((JsonElement) fileManager.getConfig(uuid.toString() +".json").get().get("data"),KitPvpPlayer.class);
         }
-        int id = new File(KitPvp.getInstance().getDataFolder(),"players/").list().length;
+        int id = 0;
+        if(new File(KitPvp.getInstance().getDataFolder(),"players/").list() != null){
+            id = new File(KitPvp.getInstance().getDataFolder(),"players/").list().length;
+        }
         KitPvpPlayer kitPvpPlayer = new KitPvpPlayer(id+1,uuid);
         savePlayer(kitPvpPlayer);
         return kitPvpPlayer;

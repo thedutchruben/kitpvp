@@ -13,6 +13,8 @@ public class ArenaCreateSubCommand extends SubCommand {
         super(command, "create");
         setDescription("Create a arena");
         setUsage("/arena create <NAME>");
+        addAlias("c");
+        addAlias("add");
     }
 
     @Override
@@ -20,6 +22,7 @@ public class ArenaCreateSubCommand extends SubCommand {
         if(args.length == 1){
             Arena arena = new Arena(KitPvp.getInstance().getArenaModule().getArenas().size() + 1);
             arena.setName(args[0]);
+            KitPvp.getInstance().getArenaModule().getArenas().add(arena);
             KitPvp.getInstance().getStorageModule().getStorage().saveArena(arena);
             MessageUtil.sendMessage(commandSender, Colors.MESSAGE,"Arena " + Colors.HIGH_LIGHT.getChatColor() + " successfully" + Colors.MESSAGE.getChatColor() +" created!" ,true);
 

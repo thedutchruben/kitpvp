@@ -10,7 +10,7 @@ public class Settings {
 
     public static List<String> customDeathMessages;
 
-    public static boolean skip_death_screen;
+    public static boolean skipDeathScreen;
 
     public static boolean scoreboard;
 }

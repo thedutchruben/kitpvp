@@ -9,7 +9,7 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
-        if(Settings.skip_death_screen){
+        if(Settings.skipDeathScreen){
             event.getEntity().spigot().respawn();
         }
     }

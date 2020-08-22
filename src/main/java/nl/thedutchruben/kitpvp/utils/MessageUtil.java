@@ -5,7 +5,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.command.CommandSender;
 
 public class MessageUtil {
-    private static String PREFIX = "[KitPvp]";
+    private static final String PREFIX = "[KitPvp]";
 
     public static void sendMessage(CommandSender player, Colors colors, String message, boolean prefix){
         if (prefix){

@@ -4,7 +4,6 @@ import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.framework.registery.Module;
 import nl.thedutchruben.kitpvp.framework.storage.Storage;
 import nl.thedutchruben.kitpvp.framework.storage.exeptions.StorageTypeNotValidException;
-import nl.thedutchruben.kitpvp.framework.storage.types.MongoDBStorage;
 import nl.thedutchruben.kitpvp.framework.storage.types.MysqlStorage;
 import nl.thedutchruben.kitpvp.framework.storage.types.JsonStorage;
 import nl.thedutchruben.kitpvp.utils.FileManager;
@@ -29,9 +28,6 @@ public class StorageModule extends Module {
                 return;
             case "msyql":
                 storage = new MysqlStorage();
-                return;
-            case "mongo":
-                storage = new MongoDBStorage();
                 return;
             default:
                 try {
@@ -79,6 +75,12 @@ public class StorageModule extends Module {
         fileConfiguration2.addDefault("custom-death-messages.enabled",true);
         fileConfiguration2.addDefault("custom-death-messages.messages",Arrays.asList("Player died","Player died again"));
         fileConfiguration2.addDefault("scoreboard",true);
+        fileConfiguration2.addDefault("spawn.world","world");
+        fileConfiguration2.addDefault("spawn.x",0);
+        fileConfiguration2.addDefault("spawn.y",0);
+        fileConfiguration2.addDefault("spawn.z",0);
+        fileConfiguration2.addDefault("spawn.pitch",0);
+        fileConfiguration2.addDefault("spawn.yaw",0);
         config2.copyDefaults(true).save();
 
         FileManager.Config config3 = fileManager.getConfig("scoreboard.json");

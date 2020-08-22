@@ -24,13 +24,13 @@ public class KitPvp extends JavaPlugin {
         this.storageModule = new StorageModule();
         this.storageModule.load();
 
-        //Setup the arena module
-        this.arenaModule = new ArenaModule();
-        this.arenaModule.load();
-
         //Setup player module
         this.playerModule = new PlayerModule();
         this.playerModule.load();
+
+        //Setup the arena module
+        this.arenaModule = new ArenaModule();
+        this.arenaModule.load();
 
         //Setup kit module
         this.kitModule = new KitModule();
@@ -40,6 +40,8 @@ public class KitPvp extends JavaPlugin {
         metrics.addCustomChart(new Metrics.SimplePie("arena_amount" , () -> String.valueOf(this.arenaModule.getArenas().size())));
         metrics.addCustomChart(new Metrics.SimplePie("use_scoreboard" , () -> String.valueOf(Settings.scoreboard)));
         metrics.addCustomChart(new Metrics.SimplePie("use_custom_death_messages" , () -> String.valueOf(Settings.enableCustomDeathMessages)));
+        metrics.addCustomChart(new Metrics.SimplePie("skip_death_screen" , () -> String.valueOf(Settings.skipDeathScreen)));
+
 
         System.out.println("-------------------[KitPvp]-----------------------");
         System.out.println("Thanks for using my plugin.");

@@ -1,8 +1,8 @@
 package nl.thedutchruben.kitpvp.utils;
 
 public class Replacement {
-    private String key;
-    private String replacement;
+    private final String key;
+    private final String replacement;
 
     public Replacement(String key, String replacement) {
         this.key = key;

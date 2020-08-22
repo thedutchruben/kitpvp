@@ -9,6 +9,7 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
+        // Skips the death screen if enabled in the settings
         if(Settings.skipDeathScreen){
             event.getEntity().spigot().respawn();
         }

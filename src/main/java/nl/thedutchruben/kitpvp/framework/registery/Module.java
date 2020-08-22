@@ -47,6 +47,10 @@ public abstract class Module {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<Command> getCommands() {
         return commands;
     }

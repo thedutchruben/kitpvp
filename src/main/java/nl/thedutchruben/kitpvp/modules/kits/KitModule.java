@@ -3,6 +3,7 @@ package nl.thedutchruben.kitpvp.modules.kits;
 import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.framework.kits.Kit;
 import nl.thedutchruben.kitpvp.framework.registery.Module;
+import nl.thedutchruben.kitpvp.modules.kits.commands.KitCommand;
 import org.bukkit.Bukkit;
 
 import java.util.List;
@@ -17,8 +18,12 @@ public class KitModule extends Module {
      */
     @Override
     public void load() {
+        //Load the kits
         kits = KitPvp.getInstance().getStorageModule().getStorage().loadKits();
         Bukkit.getLogger().log(Level.INFO,kits.size() + " kits loaded!");
+
+        //Register command
+        registerCommand(new KitCommand());
     }
 
     /**

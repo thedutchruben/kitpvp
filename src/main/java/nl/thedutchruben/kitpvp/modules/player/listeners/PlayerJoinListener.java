@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerJoinLeaveListener implements Listener {
+public class PlayerJoinListener implements Listener {
     private final PlayerModule playerModule = KitPvp.getInstance().getPlayerModule();
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
@@ -16,10 +16,5 @@ public class PlayerJoinLeaveListener implements Listener {
         playerModule.getKitPvpPlayers().put(event.getPlayer().getUniqueId(),kitPvpPlayer);
     }
 
-    @EventHandler
-    public void onQuit(PlayerQuitEvent event){
-        KitPvpPlayer kitPvpPlayer = playerModule.getKitPvpPlayers().get(event.getPlayer().getUniqueId());
-        KitPvp.getInstance().getStorageModule().getStorage().savePlayer(kitPvpPlayer);
-        playerModule.getKitPvpPlayers().remove(event.getPlayer().getUniqueId());
-    }
+
 }

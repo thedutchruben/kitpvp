@@ -15,6 +15,7 @@ public class Arena {
 
     private int id;
     private String name;
+    private boolean kitSelectOnJoin;
     private Location spawn;
     private List<Location> spawnLocations;
     private transient List<Player> playersInArea;
@@ -57,6 +58,14 @@ public class Arena {
      */
     public List<Location> getSpawnLocations() {
         return spawnLocations;
+    }
+
+    /**
+     * Get if the user need te select the kit before joining the area
+     * @return
+     */
+    public boolean isKitSelectOnJoin() {
+        return kitSelectOnJoin;
     }
 
     /**
@@ -105,6 +114,14 @@ public class Arena {
      */
     public List<Player> getPlayersInArea() {
         return playersInArea;
+    }
+
+    /**
+     * Set if the user's 
+     * @param kitSelectOnJoin
+     */
+    public void setKitSelectOnJoin(boolean kitSelectOnJoin) {
+        this.kitSelectOnJoin = kitSelectOnJoin;
     }
 
     /**

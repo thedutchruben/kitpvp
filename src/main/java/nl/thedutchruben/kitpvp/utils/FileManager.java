@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class FileManager {
 
     private final JavaPlugin plugin;
-    private HashMap<String, Config> configs    = new HashMap<String, Config>();
+    private final HashMap<String, Config> configs = new HashMap<>();
 
     public FileManager(JavaPlugin plugin)
     {
@@ -51,7 +51,7 @@ public class FileManager {
 
     public class Config {
 
-        private String              name;
+        private final String name;
         private File file;
         private YamlConfiguration config;
 

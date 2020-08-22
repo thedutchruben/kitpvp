@@ -1,10 +1,7 @@
-package nl.thedutchruben.kitpvp.modules.arenas.command;
+package nl.thedutchruben.kitpvp.modules.arenas.command.arena;
 
 import nl.thedutchruben.kitpvp.framework.registery.commands.Command;
-import nl.thedutchruben.kitpvp.modules.arenas.command.subcommands.ArenaAddLocationSubCommand;
-import nl.thedutchruben.kitpvp.modules.arenas.command.subcommands.ArenaCreateSubCommand;
-import nl.thedutchruben.kitpvp.modules.arenas.command.subcommands.ArenaListSubCommand;
-import nl.thedutchruben.kitpvp.modules.arenas.command.subcommands.ArenaRemoveSubCommand;
+import nl.thedutchruben.kitpvp.modules.arenas.command.arena.subcommands.*;
 
 public class ArenaCommand extends Command {
     public ArenaCommand() {
@@ -13,6 +10,7 @@ public class ArenaCommand extends Command {
         addSubCommand(new ArenaListSubCommand(this));
         addSubCommand(new ArenaRemoveSubCommand(this));
         addSubCommand(new ArenaAddLocationSubCommand(this));
+        addSubCommand(new ArenaRemoveLocationSubCommand(this));
         setDescription("Arena command");
     }
 

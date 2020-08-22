@@ -1,4 +1,4 @@
-package nl.thedutchruben.kitpvp.modules.arenas.command.subcommands;
+package nl.thedutchruben.kitpvp.modules.arenas.command.arena.subcommands;
 
 import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.framework.arenas.Arena;

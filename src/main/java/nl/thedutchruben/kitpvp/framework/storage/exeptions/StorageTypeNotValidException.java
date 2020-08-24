@@ -1,5 +1,8 @@
 package nl.thedutchruben.kitpvp.framework.storage.exeptions;
 
+import nl.thedutchruben.kitpvp.KitPvp;
+import org.bukkit.Bukkit;
+
 public class StorageTypeNotValidException extends Exception{
 
     /**
@@ -20,5 +23,12 @@ public class StorageTypeNotValidException extends Exception{
      */
     public StorageTypeNotValidException(String message) {
         super(message);
+    }
+
+    @Override
+    public void printStackTrace() {
+        System.out.println(getMessage() + " is not a database type of the KitPvp plugin.");
+        Bukkit.getPluginManager().disablePlugin(KitPvp.getInstance());
+        super.printStackTrace();
     }
 }

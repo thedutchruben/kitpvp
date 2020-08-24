@@ -75,12 +75,16 @@ public class StorageModule extends Module {
         fileConfiguration2.addDefault("custom-death-messages.enabled",true);
         fileConfiguration2.addDefault("custom-death-messages.messages",Arrays.asList("Player died","Player died again"));
         fileConfiguration2.addDefault("scoreboard",true);
+
         fileConfiguration2.addDefault("spawn.world","world");
         fileConfiguration2.addDefault("spawn.x",0);
         fileConfiguration2.addDefault("spawn.y",0);
         fileConfiguration2.addDefault("spawn.z",0);
         fileConfiguration2.addDefault("spawn.pitch",0);
         fileConfiguration2.addDefault("spawn.yaw",0);
+        fileConfiguration2.addDefault("Dont edit the following value's","");
+        fileConfiguration2.addDefault("dontedit.arenaAmount",0);
+        fileConfiguration2.addDefault("dontedit.arenaSignAmount",0);
         config2.copyDefaults(true).save();
 
         FileManager.Config config3 = fileManager.getConfig("scoreboard.json");

@@ -46,7 +46,7 @@ public class KitPvp extends JavaPlugin {
         System.out.println("-------------------[KitPvp]-----------------------");
         System.out.println("Thanks for using my plugin.");
         System.out.println("If you like the plugin feel free to donate.");
-        System.out.println("https://www.patreon.com/thedutchruben");
+        System.out.println("https://www.paypal.com/paypalme/RGSYT");
         System.out.println("---------------------------------------------------");
 
     }

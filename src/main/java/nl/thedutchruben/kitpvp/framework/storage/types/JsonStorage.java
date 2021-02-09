@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import nl.thedutchruben.kitpvp.KitPvp;
 import nl.thedutchruben.kitpvp.framework.arenas.Arena;
-import nl.thedutchruben.kitpvp.framework.arenas.ArenaSign;
 import nl.thedutchruben.kitpvp.framework.kits.Kit;
 import nl.thedutchruben.kitpvp.framework.player.KitPvpPlayer;
 import nl.thedutchruben.kitpvp.framework.storage.Storage;

@@ -68,25 +68,6 @@ public abstract class Storage {
      */
     public abstract void saveArena(Arena arena);
 
-    /**
-     * Loads all the {@link ArenaSign} objects from the storage, the implementation should make
-     * sure to load all of them. This may be different for every implementation on how exactly this is handled.
-     *
-     * @return a {@link List<ArenaSign>} with all found objects in the storage
-     * @see ArenaSign
-     * @since 1.0-SNAPSHOT
-     */
-    public abstract List<ArenaSign> loadArenaSigns();
-
-    /**
-     * Saves the given {@link ArenaSign} object to the storage.
-     * This may be different for every implementation on how exactly this is handled.
-     *
-     * @param arenaSign the object to save
-     * @see ArenaSign
-     * @since 1.0-SNAPSHOT
-     */
-    public abstract void saveArenaSign(ArenaSign arenaSign);
 
     /**
      * Loads all {@link Kit} objects from the storage.

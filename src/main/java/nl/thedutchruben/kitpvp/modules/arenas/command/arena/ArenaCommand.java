@@ -1,6 +1,5 @@
 package nl.thedutchruben.kitpvp.modules.arenas.command.arena;
 
-import nl.thedutchruben.kitpvp.framework.registery.commands.Command;
 import nl.thedutchruben.kitpvp.modules.arenas.command.arena.subcommands.*;
 
 public class ArenaCommand extends Command {

@@ -1,6 +1,7 @@
 package nl.thedutchruben.kitpvp.modules.storage;
 
 import nl.thedutchruben.kitpvp.KitPvp;
+import nl.thedutchruben.kitpvp.framework.kits.Kit;
 import nl.thedutchruben.kitpvp.framework.registery.Module;
 import nl.thedutchruben.kitpvp.framework.storage.Storage;
 import nl.thedutchruben.kitpvp.framework.storage.exeptions.StorageTypeNotValidException;
@@ -33,6 +34,7 @@ public class StorageModule extends Module {
                 try {
                     throw new StorageTypeNotValidException(fileManager.getConfig("database.yml").get().getString("database"));
                 } catch (StorageTypeNotValidException e) {
+                    KitPvp.getInstance().getPluginLoader().disablePlugin(KitPvp.getInstance());
                     e.printStackTrace();
                 }
         }
@@ -84,7 +86,6 @@ public class StorageModule extends Module {
         fileConfiguration2.addDefault("spawn.yaw",0);
         fileConfiguration2.addDefault("Dont edit the following value's","");
         fileConfiguration2.addDefault("dontedit.arenaAmount",0);
-        fileConfiguration2.addDefault("dontedit.arenaSignAmount",0);
         config2.copyDefaults(true).save();
 
         FileManager.Config config3 = fileManager.getConfig("scoreboard.json");

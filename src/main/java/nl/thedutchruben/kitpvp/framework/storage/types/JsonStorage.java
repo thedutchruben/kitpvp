@@ -107,40 +107,6 @@ public class JsonStorage extends Storage {
         fileManager.getConfig("arenas/" +arena.getName() +".json").save();
     }
 
-    /**
-     * Loads all the {@link ArenaSign} objects from the storage, the implementation should make
-     * sure to load all of them. This may be different for every implementation on how exactly this is handled.
-     *
-     * @return a {@link List<ArenaSign>} with all found objects in the storage
-     * @see ArenaSign
-     * @since 1.0-SNAPSHOT
-     */
-    @Override
-    public List<ArenaSign> loadArenaSigns() {
-        List<ArenaSign> arrayList = new ArrayList<>();
-        File dir = new File(KitPvp.getInstance().getDataFolder() + "/arenassign/");
-        File[] directoryListing = dir.listFiles();
-        if (directoryListing != null) {
-            for (File child : directoryListing) {
-                arrayList.add(gson.fromJson((JsonElement) fileManager.getConfig(child.getName()).get().get("data"),ArenaSign.class));
-            }
-        }
-        return arrayList;
-    }
-
-    /**
-     * Saves the given {@link ArenaSign} object to the storage.
-     * This may be different for every implementation on how exactly this is handled.
-     *
-     * @param arenaSign the object to save
-     * @see ArenaSign
-     * @since 1.0-SNAPSHOT
-     */
-    @Override
-    public void saveArenaSign(ArenaSign arenaSign) {
-        fileManager.getConfig("arenassign/" +arenaSign.getSignId() +".json").get().set("data",gson.toJson(arenaSign));
-        fileManager.getConfig("arenassign/" +arenaSign.getSignId() +".json").save();
-    }
 
     /**
      * Loads all {@link Kit} objects from the storage.

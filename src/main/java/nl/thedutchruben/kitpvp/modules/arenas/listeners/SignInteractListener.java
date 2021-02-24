@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import java.util.Locale;
+
 
 public class SignInteractListener implements Listener {
 
@@ -19,7 +21,14 @@ public class SignInteractListener implements Listener {
             if(event.getClickedBlock().getType().name().contains("SIGN")){
                 //Check if the sign is for joining areas
                 if(((Sign)event.getClickedBlock().getState()).getLine(0).equalsIgnoreCase("[AREA]")){
-
+                    switch (((Sign)event.getClickedBlock().getState()).getLine(1)){
+                        case "[MENU]":
+                            //todo OPEN MENU
+                        default:
+                            KitPvp.getInstance().getArenaModule().getArenas().stream().filter(arena -> arena.getName().toLowerCase(Locale.ROOT).equalsIgnoreCase(arena.getName().toLowerCase(Locale.ROOT))).findFirst().ifPresent(arena -> {
+                                event.getPlayer().teleport(arena.getRandomSpawnLocation());
+                            });
+                    }
                 }
             }
         }

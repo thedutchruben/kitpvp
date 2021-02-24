@@ -15,7 +15,6 @@ import java.util.logging.Level;
  */
 public class ArenaModule extends Module {
     private List<Arena> arenas;
-    private List<ArenaSign> arenaSigns;
     public void load() {
         //Load the arenas from the database
         arenas = KitPvp.getInstance().getStorageModule().getStorage().loadArenas();
@@ -40,11 +39,4 @@ public class ArenaModule extends Module {
         return arenas;
     }
 
-    /**
-     * Get a list with all the arena sign's in the server
-     * @return the list with arena signs
-     */
-    public List<ArenaSign> getArenaSigns() {
-        return arenaSigns;
-    }
 }

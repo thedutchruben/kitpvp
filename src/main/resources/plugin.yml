@@ -2,3 +2,6 @@ name: KitPvp
 version: 1.0.0
 main: nl.thedutchruben.kitpvp.KitPvp
 description: Advanced kitpvp plugin
+softdepend:
+  - PlaceHolderApi
+  - Vault

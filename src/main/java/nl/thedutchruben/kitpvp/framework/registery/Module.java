@@ -1,12 +1,7 @@
 package nl.thedutchruben.kitpvp.framework.registery;
 
-import nl.thedutchruben.kitpvp.KitPvp;
-import nl.thedutchruben.kitpvp.framework.registery.commands.Command;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
-import org.bukkit.command.PluginCommand;
-import org.bukkit.command.SimpleCommandMap;
-import org.bukkit.plugin.SimplePluginManager;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
